@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
-        IMAGE_NAME = "discoverdevops/python-web-app"
+        IMAGE_NAME = "saheedkp1234/python-web-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
