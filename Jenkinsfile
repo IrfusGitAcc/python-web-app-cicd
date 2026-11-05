@@ -31,8 +31,9 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
+		    export KUBECONFIG=/tmp/kc
                     sed "s#IMAGE_TAG_PLACEHOLDER#${IMAGE_NAME}:${IMAGE_TAG}#g" k8s/deployment-template.yaml > k8s/deployment.yaml
-                    kubectl apply -f k8s/deployment-template.yaml
+                    kubectl apply -f k8s/deployment.yaml
                     kubectl apply -f k8s/service.yaml
                     kubectl rollout status deployment/python-web-app
                 '''
